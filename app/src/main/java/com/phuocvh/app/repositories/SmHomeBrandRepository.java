@@ -3,18 +3,18 @@ package com.phuocvh.app.repositories;
 import com.phuocvh.app.repositories.projections.SmAndPmBrandProjection;
 import com.phuocvh.common.constants.ShowSts;
 import com.phuocvh.common.models.entities.sms.SmHomeBrand;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface SmHomeBrandRepository
     extends JpaRepository<SmHomeBrand, Integer>, JpaSpecificationExecutor<SmHomeBrand> {
 
   List<SmHomeBrand> findByShowStsEqualsOrderBySortOrderDesc(ShowSts showSts);
 
-  @Query("""
+  @Query(
+      """
       SELECT s as SmHomeBrand, p as PmBrand
       FROM SmHomeBrand s
       INNER JOIN PmBrand p

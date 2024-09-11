@@ -5,6 +5,4 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pms/product")
-public class PmProductController {
-
-}
+public class PmProductController {}

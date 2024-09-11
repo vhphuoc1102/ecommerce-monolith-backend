@@ -5,9 +5,8 @@ import com.phuocvh.common.constants.ShowSts;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.*;
-
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Getter

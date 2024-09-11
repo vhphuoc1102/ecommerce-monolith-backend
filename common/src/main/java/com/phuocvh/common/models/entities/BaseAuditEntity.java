@@ -2,17 +2,16 @@ package com.phuocvh.common.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class BaseAuditEntity extends BaseEntity{
+public abstract class BaseAuditEntity extends BaseEntity {
   public Integer registId;
 
   private Integer updateId;

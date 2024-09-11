@@ -4,9 +4,8 @@ import com.phuocvh.common.constants.NavSts;
 import com.phuocvh.common.constants.ShowSts;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Getter
@@ -32,8 +31,7 @@ public class PmCategory extends BaseAuditEntity {
 
   private ShowSts showSts;
 
-  @ManyToMany
-  private List<PmAttribute> pmAttribute;
+  @ManyToMany private List<PmAttribute> pmAttribute;
 
   @ManyToOne(fetch = FetchType.LAZY)
   private PmCategory parentPmCategory;

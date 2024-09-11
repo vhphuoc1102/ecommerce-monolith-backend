@@ -9,6 +9,5 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public abstract class BaseEntity {
-  @Id
-  private Integer id;
+  @Id private Integer id;
 }

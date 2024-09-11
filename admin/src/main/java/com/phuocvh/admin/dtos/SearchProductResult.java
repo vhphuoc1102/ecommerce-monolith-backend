@@ -1,5 +1,3 @@
 package com.phuocvh.admin.dtos;
 
-public class SearchProductResult {
-
-}
+public class SearchProductResult {}

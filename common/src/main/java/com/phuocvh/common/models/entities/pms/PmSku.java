@@ -2,17 +2,14 @@ package com.phuocvh.common.models.entities.pms;
 
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import com.phuocvh.common.utils.JsonConverter;
-import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.*;
-import org.hibernate.annotations.Type;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.*;
 
 @Entity
 @Getter

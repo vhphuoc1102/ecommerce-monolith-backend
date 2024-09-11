@@ -10,10 +10,8 @@ import org.springframework.format.annotation.NumberFormat;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FilterParams {
-  @NumberFormat
-  private Integer page;
-  @NumberFormat
-  private Integer limit;
+  @NumberFormat private Integer page;
+  @NumberFormat private Integer limit;
   private String sortBy;
   private Sort.Direction sortType;
   private Boolean unlimited = false;

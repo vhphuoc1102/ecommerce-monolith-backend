@@ -3,11 +3,10 @@ package com.phuocvh.common.models.entities.pms;
 import com.phuocvh.common.constants.*;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Getter
@@ -88,15 +87,11 @@ public class PmProduct extends BaseAuditEntity {
   @ManyToOne(fetch = FetchType.LAZY)
   private PmAttributeGroup pmAttributeGroup;
 
-  @OneToMany
-  private List<PmProductAttribute> pmProductAttribute;
+  @OneToMany private List<PmProductAttribute> pmProductAttribute;
 
-  @OneToMany
-  private List<PmLadderPrice> pmLadderPrice;
+  @OneToMany private List<PmLadderPrice> pmLadderPrice;
 
-  @OneToMany
-  private List<PmMemberPrice> pmMemberPrice;
+  @OneToMany private List<PmMemberPrice> pmMemberPrice;
 
-  @OneToMany
-  private List<PmReducePrice> pmReducePrice;
+  @OneToMany private List<PmReducePrice> pmReducePrice;
 }

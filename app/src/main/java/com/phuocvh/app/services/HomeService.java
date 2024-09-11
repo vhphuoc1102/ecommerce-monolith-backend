@@ -16,14 +16,13 @@ import com.phuocvh.common.models.entities.pms.PmCategory;
 import com.phuocvh.common.models.entities.sms.SmHomeBrand;
 import com.phuocvh.common.models.entities.sms.SmHomeCategory;
 import com.phuocvh.common.services.BaseService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -53,13 +52,14 @@ public class HomeService extends BaseService {
 
   public List<HomeBrandResult> findHomeBrand() {
     return smHomeBrandRepository.findHomeBrands().stream()
-        .map(projection ->
-            HomeBrandResult.builder()
-                .brandId(projection.getSmHomeBrand().getBrandId())
-                .brandName(projection.getPmBrand().getName())
-                .pic(projection.getSmHomeBrand().getPic())
-                .build()
-        ).toList();
+        .map(
+            projection ->
+                HomeBrandResult.builder()
+                    .brandId(projection.getSmHomeBrand().getBrandId())
+                    .brandName(projection.getPmBrand().getName())
+                    .pic(projection.getSmHomeBrand().getPic())
+                    .build())
+        .toList();
   }
 
   public List<HomeCategoryResult> findHomeCategories() {
