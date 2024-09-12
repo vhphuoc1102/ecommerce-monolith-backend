@@ -17,11 +17,11 @@ public abstract class BaseAuditEntity extends BaseEntity {
   private Integer updateId;
 
   @CreationTimestamp
-  @Column(name = "REGIST_TS", updatable = false)
+  @Column(name = "REGIST_TS", nullable = false, updatable = false)
   private LocalDateTime registTs;
 
   @UpdateTimestamp
-  @Column(name = "UPDATE_TS")
+  @Column(name = "UPDATE_TS", nullable = false)
   private LocalDateTime updateTs;
 
   public void generateCreateInfo(Integer userId) {

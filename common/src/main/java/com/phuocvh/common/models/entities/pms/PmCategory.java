@@ -35,4 +35,7 @@ public class PmCategory extends BaseAuditEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   private PmCategory parentPmCategory;
+
+  @OneToMany(mappedBy = "parentPmCategory")
+  private List<PmCategory> childrenPmCategory;
 }
