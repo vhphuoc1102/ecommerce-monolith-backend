@@ -12,10 +12,6 @@ import lombok.Setter;
 public class HomeProductResult {
   private Integer productId;
 
-  private Integer brandId;
-
-  private Integer categoryId;
-
   private String productName;
 
   private String title;

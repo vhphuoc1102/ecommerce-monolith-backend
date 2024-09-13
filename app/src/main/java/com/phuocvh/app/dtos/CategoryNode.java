@@ -17,12 +17,14 @@ import org.apache.commons.collections4.CollectionUtils;
 public class CategoryNode {
   private Integer categoryId;
   private String categoryName;
+  private String icon;
 
   @Builder.Default List<CategoryNode> children = new ArrayList<>();
 
   public CategoryNode(PmCategory pmCategory) {
     this.categoryId = pmCategory.getId();
     this.categoryName = pmCategory.getName();
+    this.icon = pmCategory.getIcon();
     this.children = mapChildren(pmCategory.getChildrenPmCategory());
   }
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
 
 @Getter
 @Setter
@@ -22,6 +23,6 @@ public class PaginationResult<T> {
 
     private int limit;
 
-    private int total;
+    private long total;
   }
 }

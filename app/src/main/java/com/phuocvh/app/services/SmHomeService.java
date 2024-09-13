@@ -5,6 +5,7 @@ import com.phuocvh.app.dtos.HomeCategoryResult;
 import com.phuocvh.app.dtos.HomeProductResult;
 import com.phuocvh.app.dtos.ProductSubjectResult;
 import com.phuocvh.app.mappers.SmHomeCategoryMapper;
+import com.phuocvh.app.mappers.SmHomeProductMapper;
 import com.phuocvh.app.repositories.*;
 import com.phuocvh.common.constants.ProductSubjectType;
 import com.phuocvh.common.constants.ShowSts;
@@ -13,13 +14,17 @@ import com.phuocvh.common.models.dtos.PaginationResult;
 import com.phuocvh.common.models.entities.pms.PmBrand;
 import com.phuocvh.common.models.entities.pms.PmCategory;
 import com.phuocvh.common.models.entities.sms.SmHomeCategory;
+import com.phuocvh.common.models.entities.sms.SmHomeProduct;
 import com.phuocvh.common.services.BaseService;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -64,7 +69,25 @@ public class SmHomeService extends BaseService {
 
   public PaginationResult<HomeProductResult> findHomeProducts(
       Integer productSubjectId, FilterParams filterParam) {
-    return null;
+    Page<SmHomeProduct> smHomeProductPage =
+        smHomeProductRepository.findHomeProducts(productSubjectId, filterParam.getPageable());
+
+    long total = smHomeProductPage.getTotalElements();
+    List<HomeProductResult> results = new ArrayList<>();
+    if(total > 0){
+    results = smHomeProductPage.getContent().stream()
+          .map(SmHomeProductMapper.MAPPER::fromEntityToResult)
+          .toList();
+    }
+    return PaginationResult.<HomeProductResult>builder()
+        .meta(
+            PaginationResult.PaginationMeta.builder()
+                .offset(filterParam.getOffset())
+                .limit(filterParam.getLimit())
+                .total(total)
+                .build())
+        .data(results)
+        .build();
   }
 
   public List<ProductSubjectResult> findProductSubjects() {

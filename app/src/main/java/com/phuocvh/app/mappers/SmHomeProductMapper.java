@@ -11,15 +11,6 @@ import org.mapstruct.factory.Mappers;
 public interface SmHomeProductMapper {
   SmHomeProductMapper MAPPER = Mappers.getMapper(SmHomeProductMapper.class);
 
-  @Mapping(target = "title", source = "")
-  @Mapping(target = "subtitle", source = "")
-  @Mapping(target = "stock", source = "")
-  @Mapping(target = "sale", source = "")
-  @Mapping(target = "reviews", source = "")
-  @Mapping(target = "ratings", source = "")
-  @Mapping(target = "promoPrice", source = "")
-  @Mapping(target = "productName", source = "")
-  @Mapping(target = "price", source = "")
   @Mapping(
       target = "tags",
       source = "tags",
