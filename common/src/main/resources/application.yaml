@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/postgres
+    url: jdbc:postgresql://localhost:5433/postgres?currentSchema=public
     password: root
     username: root
   jpa:
@@ -13,7 +13,9 @@ spring:
         physical_naming_strategy: com.phuocvh.common.config.CustomPhysicalNamingStrategy
         globally_quoted_identifiers: true
     show-sql: true
-
+  devtools:
+    restart:
+      enabled: false
 logging:
   level:
     org:
