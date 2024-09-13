@@ -8,11 +8,11 @@
   <packaging>pom</packaging>
 
   <name>backend</name>
-  <url>http://maven.apache.org</url>
   <modules>
-    <module>admin</module>
-    <module>app</module>
-    <module>common</module>
+    <module>mod-admin</module>
+    <module>mod-app</module>
+    <module>mod-common</module>
+    <module>mod-search</module>
   </modules>
 
   <properties>
@@ -83,7 +83,7 @@
       <!-- Common -->
       <dependency>
         <groupId>com.phuocvh</groupId>
-        <artifactId>common</artifactId>
+        <artifactId>mod-common</artifactId>
         <version>${common.version}</version>
       </dependency>
       <!-- Apache commons -->
