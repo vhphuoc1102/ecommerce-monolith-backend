@@ -49,7 +49,7 @@ public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
       }
     }
 
-    return new Identifier(builder.toString().toUpperCase(Locale.ROOT), identifier.isQuoted());
+    return new Identifier(builder.toString().toLowerCase(), identifier.isQuoted());
   }
 
   private boolean isUnderscoreRequired(char before, char current, char after) {
