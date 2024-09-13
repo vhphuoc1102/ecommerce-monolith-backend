@@ -15,15 +15,15 @@ public interface SmHomeProductRepository
       value =
           """
       SELECT sm.*
-      FROM "SM_HOME_PRODUCT" sm
-      WHERE sm.PRODUCT_SUBJECT_ID = :productSubjectId
-      ORDER BY sm.SORT_ORDER DESC
+      FROM sm_home_product sm
+      WHERE sm.product_subject_id = :productSubjectId
+      ORDER BY sm.sort_order DESC
    """,
       countQuery =
           """
       SELECT COUNT(*)
-      FROM "SM_HOME_PRODUCT"
-      WHERE PRODUCT_SUBJECT_ID = :productSubjectId
+      FROM sm_home_product sm
+      WHERE sm.product_subject_id = :productSubjectId
     """,
       nativeQuery = true)
   Page<SmHomeProduct> findHomeProducts(
