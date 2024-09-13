@@ -11,11 +11,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         physical_naming_strategy: com.phuocvh.common.config.CustomPhysicalNamingStrategy
-        globally_quoted_identifiers: true
     show-sql: true
-  devtools:
-    restart:
-      enabled: false
 logging:
   level:
     org:
