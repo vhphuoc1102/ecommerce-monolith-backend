@@ -31,9 +31,15 @@ public class PmCategory extends BaseAuditEntity {
 
   private ShowSts showSts;
 
-  @ManyToMany private List<PmAttribute> pmAttribute;
+  @ManyToMany
+  @JoinTable(
+      name = "PM_CATEGORY_ATTRIBUTE",
+      joinColumns = @JoinColumn(name = "CATEGORY_ID"),
+      inverseJoinColumns = @JoinColumn(name = "ATTRIBUTE_ID"))
+  private List<PmAttribute> pmAttribute;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "PARENT_ID")
   private PmCategory parentPmCategory;
 
   @OneToMany(mappedBy = "parentPmCategory")

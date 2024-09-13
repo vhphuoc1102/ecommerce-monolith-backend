@@ -2,10 +2,7 @@ package com.phuocvh.common.models.entities.pms;
 
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import com.phuocvh.common.utils.JsonConverter;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +25,7 @@ public class PmSku extends BaseAuditEntity {
   private Integer lowStock;
 
   @Convert(converter = JsonConverter.class)
+  @Builder.Default
   private Map<String, Object> saleProp = new HashMap<>();
 
   private BigDecimal price;
@@ -35,6 +33,7 @@ public class PmSku extends BaseAuditEntity {
   private BigDecimal promoPrice;
 
   @ManyToOne(optional = false)
+  @JoinColumn(name = "PRODUCT_ID")
   private PmProduct pmProduct;
 
   public PmSku setSaleProp(Map<String, Object> props) {

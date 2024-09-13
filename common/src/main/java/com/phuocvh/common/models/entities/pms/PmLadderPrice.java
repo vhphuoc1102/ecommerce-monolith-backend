@@ -1,10 +1,7 @@
 package com.phuocvh.common.models.entities.pms;
 
 import com.phuocvh.common.models.entities.BaseAuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import lombok.*;
 
@@ -23,5 +20,6 @@ public class PmLadderPrice extends BaseAuditEntity {
   private BigDecimal price;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "PRODUCT_ID")
   private PmProduct pmProduct;
 }

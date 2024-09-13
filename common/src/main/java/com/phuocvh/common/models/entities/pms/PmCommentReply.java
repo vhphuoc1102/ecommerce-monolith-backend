@@ -1,10 +1,7 @@
 package com.phuocvh.common.models.entities.pms;
 
 import com.phuocvh.common.models.entities.BaseAuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -24,5 +21,6 @@ public class PmCommentReply extends BaseAuditEntity {
   private Integer type;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "COMMENT_ID")
   private PmComment pmComment;
 }

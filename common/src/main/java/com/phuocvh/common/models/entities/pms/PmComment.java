@@ -42,5 +42,6 @@ public class PmComment extends BaseAuditEntity {
   private List<PmCommentReply> pmCommentReply;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "PRODUCT_ID")
   private PmProduct pmProduct;
 }

@@ -79,19 +79,26 @@ public class PmProduct extends BaseAuditEntity {
   private BigDecimal averageRate;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "CATEGORY_ID")
   private PmCategory pmCategory;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "BRAND_ID")
   private PmBrand pmBrand;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ATTRIBUTE_CATEGORY_ID")
   private PmAttributeGroup pmAttributeGroup;
 
-  @OneToMany private List<PmProductAttribute> pmProductAttribute;
+  @OneToMany(mappedBy = "pmProduct")
+  private List<PmProductAttribute> pmProductAttribute;
 
-  @OneToMany private List<PmLadderPrice> pmLadderPrice;
+  @OneToMany(mappedBy = "pmProduct")
+  private List<PmLadderPrice> pmLadderPrice;
 
-  @OneToMany private List<PmMemberPrice> pmMemberPrice;
+  @OneToMany(mappedBy = "pmProduct")
+  private List<PmMemberPrice> pmMemberPrice;
 
-  @OneToMany private List<PmReducePrice> pmReducePrice;
+  @OneToMany(mappedBy = "pmProduct")
+  private List<PmReducePrice> pmReducePrice;
 }

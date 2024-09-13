@@ -1,10 +1,7 @@
 package com.phuocvh.common.models.entities.pms;
 
 import com.phuocvh.common.models.entities.BaseAuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -18,5 +15,6 @@ public class PmAlbumPicture extends BaseAuditEntity {
   private String pic;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ALBUM_ID")
   private PmAlbum pmAlbum;
 }

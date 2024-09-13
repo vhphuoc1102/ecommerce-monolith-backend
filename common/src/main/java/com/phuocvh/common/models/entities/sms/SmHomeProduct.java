@@ -2,10 +2,8 @@ package com.phuocvh.common.models.entities.sms;
 
 import com.phuocvh.common.constants.ShowSts;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.*;
 
@@ -18,6 +16,24 @@ import lombok.*;
 @Table(name = "SM_HOME_PRODUCT")
 public class SmHomeProduct extends BaseAuditEntity {
   private Integer productId;
+
+  private String productName;
+
+  private String title;
+
+  private String subtitle;
+
+  private Integer reviews;
+
+  private BigDecimal ratings;
+
+  private Integer stock;
+
+  private Integer sale;
+
+  private BigDecimal price;
+
+  private BigDecimal promoPrice;
 
   private String pic;
 
@@ -32,5 +48,6 @@ public class SmHomeProduct extends BaseAuditEntity {
   private Integer sortOrder;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "PRODUCT_SUBJECT_ID")
   private SmProductSubject smProductSubject;
 }

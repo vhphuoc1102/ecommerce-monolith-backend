@@ -35,5 +35,6 @@ public class PmAttribute extends BaseAuditEntity {
   private List<PmCategory> pmCategory;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ATTRIBUTE_GROUP_ID")
   private PmAttributeGroup pmAttributeGroup;
 }
