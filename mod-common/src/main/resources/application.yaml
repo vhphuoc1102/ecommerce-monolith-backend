@@ -27,3 +27,11 @@ logging:
 
 mode:
   debug: true
+
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
+  allowed-headers: "*"
+  exposed-headers: "Authorization, Content-Type"
+  allow-credentials: true
+  max-age: 3600

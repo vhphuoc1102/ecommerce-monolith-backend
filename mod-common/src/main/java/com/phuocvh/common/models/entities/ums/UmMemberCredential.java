@@ -26,7 +26,7 @@ public class UmMemberCredential extends BaseAuditEntity implements UserDetails {
 
   private String phone;
 
-  private String socialTypes;
+  private String socialType;
 
   @Override
   @Transient

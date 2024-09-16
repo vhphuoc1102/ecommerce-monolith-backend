@@ -3,6 +3,7 @@ package com.phuocvh.app.config;
 import com.phuocvh.app.repositories.UmMemberCredentialRepository;
 import com.phuocvh.common.exceptions.BusinessException;
 import com.phuocvh.common.exceptions.BusinessExceptionReason;
+import com.phuocvh.common.utils.DataUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,24 +21,15 @@ public class AppConfig {
 
   @Bean
   UserDetailsService userDetailsService() {
-    return emailOrPhone -> {
-      if (isPhone(emailOrPhone)) {
+    return email -> {
+      if (DataUtils.isEmail(email)) {
         return umMemberCredentialRepository
-            .findByPhone(emailOrPhone)
+            .findByEmail(email)
             .orElseThrow(
                 () ->
-                    new BusinessException(
-                        BusinessExceptionReason.USER_NOT_FOUND, "phone", emailOrPhone));
-
-      } else if (isEmail(emailOrPhone)) {
-        return umMemberCredentialRepository
-            .findByEmail(emailOrPhone)
-            .orElseThrow(
-                () ->
-                    new BusinessException(
-                        BusinessExceptionReason.USER_NOT_FOUND, "email", emailOrPhone));
+                    new BusinessException(BusinessExceptionReason.USER_NOT_FOUND, "email", email));
       } else {
-        throw new BusinessException(BusinessExceptionReason.INVALID_EMAIL_OR_PHONE);
+        throw new BusinessException(BusinessExceptionReason.INVALID_EMAIL);
       }
     };
   }
@@ -60,13 +52,5 @@ public class AppConfig {
     authProvider.setPasswordEncoder(passwordEncoder());
 
     return authProvider;
-  }
-
-  private boolean isPhone(String phoneOrEmail) {
-    return phoneOrEmail.matches("^\\d{10,11}$");
-  }
-
-  private boolean isEmail(String phoneOrEmail) {
-    return phoneOrEmail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
   }
 }
