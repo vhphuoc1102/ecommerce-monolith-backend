@@ -14,17 +14,17 @@ public interface SmHomeProductRepository
   @Query(
       value =
           """
-      SELECT sm.*
-      FROM sm_home_product sm
-      WHERE sm.product_subject_id = :productSubjectId
-      ORDER BY sm.sort_order DESC
-   """,
+             SELECT sm.*
+             FROM sm_home_product sm
+             WHERE sm.product_subject_id = :productSubjectId
+             ORDER BY sm.sort_order DESC
+          """,
       countQuery =
           """
-      SELECT COUNT(*)
-      FROM sm_home_product sm
-      WHERE sm.product_subject_id = :productSubjectId
-    """,
+            SELECT COUNT(*)
+            FROM sm_home_product sm
+            WHERE sm.product_subject_id = :productSubjectId
+          """,
       nativeQuery = true)
   Page<SmHomeProduct> findHomeProducts(
       @Param("productSubjectId") Integer productSubjectId, Pageable pageable);

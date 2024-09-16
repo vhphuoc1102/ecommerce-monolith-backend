@@ -3,11 +3,10 @@ package com.phuocvh.common.models.entities.pms;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.*;
 
 @Entity
 @Getter
@@ -27,7 +26,7 @@ public class PmSku extends BaseAuditEntity {
 
   @Convert(converter = JsonConverter.class)
   @Builder.Default
-  private Map<String, Object> saleProp = new HashMap<>();
+  private Map<String, Object> attribute = new HashMap<>();
 
   private BigDecimal price;
 

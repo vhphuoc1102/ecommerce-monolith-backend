@@ -5,10 +5,8 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum SocialType {
-  DATABASE(0),
-  GOOGLE(1),
-  FACEBOOK(2);
+public enum PictureType {
+  ORDER_PIC(0);
 
   private final int value;
 }

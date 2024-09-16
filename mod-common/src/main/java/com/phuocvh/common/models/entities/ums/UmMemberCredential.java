@@ -3,7 +3,12 @@ package com.phuocvh.common.models.entities.ums;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import java.util.Collection;
+import java.util.List;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Getter
@@ -12,7 +17,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Table(name = "UM_MEMBER_CREDENTIAL")
-public class UmMemberCredential extends BaseAuditEntity {
+public class UmMemberCredential extends BaseAuditEntity implements UserDetails {
   private String username;
 
   private String password;
@@ -22,4 +27,10 @@ public class UmMemberCredential extends BaseAuditEntity {
   private String phone;
 
   private String socialTypes;
+
+  @Override
+  @Transient
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of();
+  }
 }

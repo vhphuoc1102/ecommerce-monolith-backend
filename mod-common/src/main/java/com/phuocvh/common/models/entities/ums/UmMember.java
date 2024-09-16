@@ -4,9 +4,8 @@ import com.phuocvh.common.constants.ActiveSts;
 import com.phuocvh.common.constants.Gender;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Getter
@@ -35,6 +34,10 @@ public class UmMember extends BaseAuditEntity {
   @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
   private UmMemberCredential umMemberCredential;
 
-  @OneToMany(mappedBy = "umMember", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+  @OneToMany(
+      mappedBy = "umMember",
+      fetch = FetchType.LAZY,
+      orphanRemoval = true,
+      cascade = CascadeType.ALL)
   private List<UmRecipientAddress> recipientAddresses;
 }

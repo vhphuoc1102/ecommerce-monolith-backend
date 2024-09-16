@@ -5,3 +5,8 @@ server:
 spring:
   application:
     name: App
+
+security:
+  jwt:
+    secret: e3ff05cad9edea7c448159ed50f8d3aa0b00f17f4ae5521de780fa0a3d2200f8
+    expiration: 86400000

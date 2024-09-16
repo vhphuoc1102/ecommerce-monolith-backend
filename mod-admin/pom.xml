@@ -1,27 +1,27 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.phuocvh</groupId>
-    <artifactId>backend</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.phuocvh</groupId>
+        <artifactId>backend</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>mod-admin</artifactId>
-  <packaging>jar</packaging>
+    <artifactId>mod-admin</artifactId>
+    <packaging>jar</packaging>
 
-  <name>admin</name>
+    <name>admin</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.phuocvh</groupId>
-      <artifactId>mod-common</artifactId>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.phuocvh</groupId>
+            <artifactId>mod-common</artifactId>
+        </dependency>
+    </dependencies>
 </project>

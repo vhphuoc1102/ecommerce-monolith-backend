@@ -5,7 +5,6 @@ import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.*;
 
 @Entity
@@ -14,8 +13,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "PM_PRODUCT")
-public class PmProduct extends BaseAuditEntity {
+@Table(name = "PM_OPERATE_HISTORY")
+public class PmOperateHistory extends BaseAuditEntity {
   private String name;
 
   private String title;
@@ -70,37 +69,17 @@ public class PmProduct extends BaseAuditEntity {
 
   private Integer sale;
 
-  private Integer review;
-
-  private BigDecimal rating;
-
   private Integer giftPoint;
 
   private Integer levelPoint;
 
   private Integer usePointLimit;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "CATEGORY_ID")
-  private PmCategory pmCategory;
+  private String operatorName;
+
+  private String operatorNote;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "BRAND_ID")
-  private PmBrand pmBrand;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "ATTRIBUTE_CATEGORY_ID")
-  private PmAttributeGroup pmAttributeGroup;
-
-  @OneToMany(mappedBy = "pmProduct")
-  private List<PmProductAttribute> pmProductAttribute;
-
-  @OneToMany(mappedBy = "pmProduct")
-  private List<PmLadderPrice> pmLadderPrice;
-
-  @OneToMany(mappedBy = "pmProduct")
-  private List<PmMemberPrice> pmMemberPrice;
-
-  @OneToMany(mappedBy = "pmProduct")
-  private List<PmReducePrice> pmReducePrice;
+  @JoinColumn(name = "PRODUCT_ID")
+  private PmProduct pmProduct;
 }

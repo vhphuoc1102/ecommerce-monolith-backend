@@ -38,6 +38,6 @@ public class FilterParams {
 
   public Pageable getPageable() {
     PageRequest pageRequest = PageRequest.of(getPage(), getLimit());
-    return (sortBy != null) ? pageRequest.withSort(getSortType(), sortBy) : pageRequest;
+    return (getSort() != null) ? pageRequest.withSort(getSort()) : pageRequest;
   }
 }

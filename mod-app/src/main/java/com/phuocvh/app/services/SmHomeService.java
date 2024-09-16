@@ -15,8 +15,6 @@ import com.phuocvh.common.models.entities.pms.PmBrand;
 import com.phuocvh.common.models.entities.pms.PmCategory;
 import com.phuocvh.common.models.entities.sms.SmHomeCategory;
 import com.phuocvh.common.models.entities.sms.SmHomeProduct;
-import com.phuocvh.common.services.BaseService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +27,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SmHomeService extends BaseService {
+public class SmHomeService {
   private final SmHomeBrandRepository smHomeBrandRepository;
   private final SmHomeCategoryRepository smHomeCategoryRepository;
   private final SmHomeProductRepository smHomeProductRepository;
@@ -74,10 +72,11 @@ public class SmHomeService extends BaseService {
 
     long total = smHomeProductPage.getTotalElements();
     List<HomeProductResult> results = new ArrayList<>();
-    if(total > 0){
-    results = smHomeProductPage.getContent().stream()
-          .map(SmHomeProductMapper.MAPPER::fromEntityToResult)
-          .toList();
+    if (total > 0) {
+      results =
+          smHomeProductPage.getContent().stream()
+              .map(SmHomeProductMapper.MAPPER::fromEntityToResult)
+              .toList();
     }
     return PaginationResult.<HomeProductResult>builder()
         .meta(

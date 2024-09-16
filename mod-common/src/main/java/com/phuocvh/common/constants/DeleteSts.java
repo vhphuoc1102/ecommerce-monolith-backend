@@ -5,10 +5,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum SocialType {
-  DATABASE(0),
-  GOOGLE(1),
-  FACEBOOK(2);
+public enum DeleteSts {
+  NOT_DELETED(0),
+  DELETED(1);
 
   private final int value;
 }

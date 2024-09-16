@@ -3,10 +3,9 @@ package com.phuocvh.common.models.entities.sms;
 import com.phuocvh.common.constants.ShowSts;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Getter
