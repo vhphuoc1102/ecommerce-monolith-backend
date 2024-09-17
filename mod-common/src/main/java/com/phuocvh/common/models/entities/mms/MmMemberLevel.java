@@ -20,4 +20,6 @@ public class MmMemberLevel extends BaseEntity {
   private Integer freightPoint; // Point to use for free shipping
 
   private Integer commentPoint; // Point received for a comment
+
+  private Integer sortOrder;
 }

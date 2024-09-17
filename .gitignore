@@ -39,3 +39,6 @@ build/
 
 ### Project ###
 logs/
+
+### IntelliJ IDEA ###
+.idea/

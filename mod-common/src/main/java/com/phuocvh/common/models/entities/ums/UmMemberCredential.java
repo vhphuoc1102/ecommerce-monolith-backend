@@ -4,11 +4,12 @@ import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import java.util.Collection;
-import java.util.List;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,15 +19,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Builder
 @Table(name = "UM_MEMBER_CREDENTIAL")
 public class UmMemberCredential extends BaseAuditEntity implements UserDetails {
-  private String username;
+  private String username = "";
 
-  private String password;
+  private String password = "";
 
-  private String email;
+  private String email = "";
 
-  private String phone;
+  private String phone = "";
 
-  private String socialType;
+  private String type = "";
 
   @Override
   @Transient

@@ -2,6 +2,7 @@ package com.phuocvh.app.controllers;
 
 import com.phuocvh.app.dtos.LoginRequest;
 import com.phuocvh.app.dtos.LoginResponse;
+import com.phuocvh.app.dtos.SignupRequest;
 import com.phuocvh.app.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,5 +20,10 @@ public class AuthController {
   @PostMapping("/login")
   public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
     return ResponseEntity.ok(authService.login(loginRequest));
+  }
+
+  @PostMapping("/signup")
+  public void signup(@RequestBody SignupRequest signupRequest) {
+    authService.signup(signupRequest);
   }
 }
