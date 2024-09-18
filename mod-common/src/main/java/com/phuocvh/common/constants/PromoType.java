@@ -3,11 +3,13 @@ package com.phuocvh.common.constants;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Getter
 @RequiredArgsConstructor
-public enum LoginType {
-  DATABASE("0"),
-  GOOGLE("1"),
-  FACEBOOK("2");
-  private final String value;
+@Getter
+public enum PromoType {
+  NORMAL(0),
+  PROMO(1),
+  MEMBER(2),
+  LADDER(3),
+  DISCOUNT(4);
+  private final int value;
 }

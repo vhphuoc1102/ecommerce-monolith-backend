@@ -12,13 +12,14 @@ import org.springframework.stereotype.Component;
 public class UmMemberDao {
   private final UmMemberRepository umMemberRepository;
 
-  public UmMember findById(Integer memberId){
+  public UmMember findById(Integer memberId) {
     return umMemberRepository
         .findById(memberId)
         .orElseThrow(
-            () -> new BusinessException(
-                BusinessExceptionReason.ENTITY_NOT_FOUND,
-                UmMember.class.getSimpleName(),
-                memberId.toString()));
+            () ->
+                new BusinessException(
+                    BusinessExceptionReason.ENTITY_NOT_FOUND,
+                    UmMember.class.getSimpleName(),
+                    memberId.toString()));
   }
 }

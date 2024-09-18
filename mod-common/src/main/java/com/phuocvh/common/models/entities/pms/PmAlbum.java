@@ -15,6 +15,10 @@ import lombok.*;
 @Builder
 @Table(name = "PM_ALBUM")
 public class PmAlbum extends BaseAuditEntity {
+  private Integer productId;
+
+  private Integer productSkuId;
+
   private String name;
 
   private String coverPicture;

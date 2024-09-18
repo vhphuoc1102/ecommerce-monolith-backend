@@ -1,8 +1,8 @@
 package com.phuocvh.app.services;
 
-import com.phuocvh.app.dtos.LoginRequest;
-import com.phuocvh.app.dtos.LoginResponse;
-import com.phuocvh.app.dtos.SignupRequest;
+import com.phuocvh.app.dtos.auth.LoginRequest;
+import com.phuocvh.app.dtos.auth.LoginResponse;
+import com.phuocvh.app.dtos.auth.SignupRequest;
 import com.phuocvh.app.repositories.MmMemberLevelRepository;
 import com.phuocvh.app.repositories.UmMemberCredentialRepository;
 import com.phuocvh.app.repositories.UmMemberRepository;
@@ -65,28 +65,31 @@ public class AuthService {
     return new LoginResponse(token, expireIn);
   }
 
-public void signup(SignupRequest signupRequest) {
-    umMemberCredentialRepository.findByEmail(signupRequest.email()).ifPresentOrElse(
-        credential -> {
-            if (LoginType.DATABASE.getValue().equals(credential.getType())) {
+  public void signup(SignupRequest signupRequest) {
+    umMemberCredentialRepository
+        .findByEmail(signupRequest.email())
+        .ifPresentOrElse(
+            credential -> {
+              if (LoginType.DATABASE.getValue().equals(credential.getType())) {
                 throw new BusinessException(BusinessExceptionReason.EMAIL_EXISTED);
-            }
-            credential.setType(credential.getType() + "-" + LoginType.DATABASE.getValue());
-            credential.setPassword(passwordEncoder.encode(signupRequest.password()));
-            umMemberCredentialRepository.save(credential);
-        },
-        () -> {
-            UmMemberCredential newCredential = UmMemberCredential.builder()
-                .email(signupRequest.email())
-                .password(passwordEncoder.encode(signupRequest.password()))
-                .type(LoginType.DATABASE.getValue())
-                .build();
-            MmMemberLevel memberLevel = mmMemberLevelRepository.findAll(Sort.by(Sort.Direction.DESC, "sortOrder")).get(0);
-            UmMember member = new UmMember();
-            member.setMemberLevelId(memberLevel.getId());
-            member.setUmMemberCredential(newCredential);
-            umMemberRepository.save(member);
-        }
-    );
-}
+              }
+              credential.setType(credential.getType() + "-" + LoginType.DATABASE.getValue());
+              credential.setPassword(passwordEncoder.encode(signupRequest.password()));
+              umMemberCredentialRepository.save(credential);
+            },
+            () -> {
+              UmMemberCredential newCredential =
+                  UmMemberCredential.builder()
+                      .email(signupRequest.email())
+                      .password(passwordEncoder.encode(signupRequest.password()))
+                      .type(LoginType.DATABASE.getValue())
+                      .build();
+              MmMemberLevel memberLevel =
+                  mmMemberLevelRepository.findAll(Sort.by(Sort.Direction.DESC, "sortOrder")).get(0);
+              UmMember member = new UmMember();
+              member.setMemberLevelId(memberLevel.getId());
+              member.setUmMemberCredential(newCredential);
+              umMemberRepository.save(member);
+            });
+  }
 }

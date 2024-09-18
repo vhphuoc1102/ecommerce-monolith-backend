@@ -1,8 +1,8 @@
 package com.phuocvh.app.controllers;
 
-import com.phuocvh.app.dtos.LoginRequest;
-import com.phuocvh.app.dtos.LoginResponse;
-import com.phuocvh.app.dtos.SignupRequest;
+import com.phuocvh.app.dtos.auth.LoginRequest;
+import com.phuocvh.app.dtos.auth.LoginResponse;
+import com.phuocvh.app.dtos.auth.SignupRequest;
 import com.phuocvh.app.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

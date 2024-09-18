@@ -4,7 +4,6 @@ import com.phuocvh.common.constants.*;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import lombok.*;
 
 @Entity
@@ -53,15 +52,7 @@ public class PmOperateHistory extends BaseAuditEntity {
 
   private BigDecimal originPrice;
 
-  private BigDecimal promoPrice;
-
-  private LocalDateTime promoStartTs;
-
-  private LocalDateTime promoEndTs;
-
-  private Integer promoPerLimit;
-
-  private Integer promoType;
+  private PromoType promoType;
 
   private String detailTitle;
 

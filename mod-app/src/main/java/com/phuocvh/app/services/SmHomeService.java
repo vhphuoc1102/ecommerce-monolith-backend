@@ -1,9 +1,9 @@
 package com.phuocvh.app.services;
 
-import com.phuocvh.app.dtos.HomeBrandResult;
-import com.phuocvh.app.dtos.HomeCategoryResult;
-import com.phuocvh.app.dtos.HomeProductResult;
-import com.phuocvh.app.dtos.ProductSubjectResult;
+import com.phuocvh.app.dtos.pms.ProductSubjectResult;
+import com.phuocvh.app.dtos.sms.HomeBrandResult;
+import com.phuocvh.app.dtos.sms.HomeCategoryResult;
+import com.phuocvh.app.dtos.sms.HomeProductResult;
 import com.phuocvh.app.mappers.SmHomeCategoryMapper;
 import com.phuocvh.app.mappers.SmHomeProductMapper;
 import com.phuocvh.app.repositories.*;

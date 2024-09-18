@@ -5,6 +5,7 @@ import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.*;
 
@@ -35,4 +36,13 @@ public class PmSku extends BaseAuditEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "PRODUCT_ID")
   private PmProduct pmProduct;
+
+  @OneToMany(mappedBy = "pmSku")
+  private List<PmMemberPrice> pmMemberPrices;
+
+  @OneToMany(mappedBy = "pmSku")
+  private List<PmLadderPrice> pmLadderPrices;
+
+  @OneToMany(mappedBy = "pmSku")
+  private List<PmReducePrice> pmReducePrices;
 }

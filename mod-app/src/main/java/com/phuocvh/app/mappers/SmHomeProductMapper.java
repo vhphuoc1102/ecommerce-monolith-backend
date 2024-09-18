@@ -1,6 +1,6 @@
 package com.phuocvh.app.mappers;
 
-import com.phuocvh.app.dtos.HomeProductResult;
+import com.phuocvh.app.dtos.sms.HomeProductResult;
 import com.phuocvh.common.models.entities.sms.SmHomeProduct;
 import java.util.List;
 import org.mapstruct.Mapper;

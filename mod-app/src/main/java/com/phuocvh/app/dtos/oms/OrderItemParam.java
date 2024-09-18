@@ -1,4 +1,4 @@
-package com.phuocvh.app.dtos;
+package com.phuocvh.app.dtos.oms;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;

@@ -3,7 +3,7 @@ package com.phuocvh.app.services;
 import com.phuocvh.app.daos.PmProductDao;
 import com.phuocvh.app.daos.PmSkuDao;
 import com.phuocvh.app.daos.UmMemberDao;
-import com.phuocvh.app.dtos.OrderItemParam;
+import com.phuocvh.app.dtos.oms.OrderItemParam;
 import com.phuocvh.app.repositories.OmOrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

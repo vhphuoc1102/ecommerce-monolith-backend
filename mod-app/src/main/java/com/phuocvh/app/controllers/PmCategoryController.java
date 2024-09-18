@@ -1,6 +1,6 @@
 package com.phuocvh.app.controllers;
 
-import com.phuocvh.app.dtos.CategoryNode;
+import com.phuocvh.app.dtos.pms.CategoryNode;
 import com.phuocvh.app.services.PmCategoryService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

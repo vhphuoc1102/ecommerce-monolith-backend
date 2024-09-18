@@ -4,7 +4,6 @@ import com.phuocvh.common.constants.*;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.*;
 
@@ -29,6 +28,8 @@ public class PmProduct extends BaseAuditEntity {
   private String description;
 
   private String keyword;
+
+  private Integer quantity;
 
   private String note;
 
@@ -56,13 +57,7 @@ public class PmProduct extends BaseAuditEntity {
 
   private BigDecimal promoPrice;
 
-  private LocalDateTime promoStartTs;
-
-  private LocalDateTime promoEndTs;
-
-  private Integer promoPerLimit;
-
-  private Integer promoType;
+  private PromoType promoType;
 
   private String detailTitle;
 
@@ -72,7 +67,7 @@ public class PmProduct extends BaseAuditEntity {
 
   private Integer review;
 
-  private BigDecimal rating;
+  private BigDecimal rate;
 
   private Integer giftPoint;
 
@@ -103,4 +98,7 @@ public class PmProduct extends BaseAuditEntity {
 
   @OneToMany(mappedBy = "pmProduct")
   private List<PmReducePrice> pmReducePrice;
+
+  @OneToMany(mappedBy = "pmProduct")
+  private List<PmSku> pmSku;
 }

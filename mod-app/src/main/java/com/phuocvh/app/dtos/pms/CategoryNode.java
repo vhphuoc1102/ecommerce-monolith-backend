@@ -1,4 +1,4 @@
-package com.phuocvh.app.dtos;
+package com.phuocvh.app.dtos.pms;
 
 import com.phuocvh.common.models.entities.pms.PmCategory;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.phuocvh.app.dtos;
+package com.phuocvh.app.dtos.oms;
 
 import lombok.Getter;
 import lombok.Setter;

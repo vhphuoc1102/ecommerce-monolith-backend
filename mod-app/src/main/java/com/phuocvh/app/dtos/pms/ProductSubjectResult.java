@@ -1,4 +1,4 @@
-package com.phuocvh.app.dtos;
+package com.phuocvh.app.dtos.pms;
 
 import lombok.Builder;
 import lombok.Getter;

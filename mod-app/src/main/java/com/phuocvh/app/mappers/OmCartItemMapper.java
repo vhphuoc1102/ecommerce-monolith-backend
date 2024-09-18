@@ -1,6 +1,6 @@
 package com.phuocvh.app.mappers;
 
-import com.phuocvh.app.dtos.CartItemResult;
+import com.phuocvh.app.dtos.oms.CartItemResult;
 import com.phuocvh.common.models.entities.oms.OmCartItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
