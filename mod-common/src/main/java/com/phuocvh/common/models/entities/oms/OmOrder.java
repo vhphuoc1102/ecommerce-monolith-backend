@@ -21,69 +21,69 @@ import lombok.*;
 @Builder
 @Table(name = "OM_ORDER")
 public class OmOrder extends BaseAuditEntity {
-  private Integer memberId;
+  private Integer memberId = -1;
 
-  private String memberName;
+  private String memberName = "";
 
-  private Integer couponId;
+  private Integer couponId = -1;
 
-  private String orderSn;
+  private String orderSn = "";
 
-  private BigDecimal totalAmount;
+  private BigDecimal totalAmount = BigDecimal.ZERO;
 
-  private BigDecimal payAmount;
+  private BigDecimal payAmount = BigDecimal.ZERO;
 
-  private BigDecimal freightAmount;
+  private BigDecimal freightAmount = BigDecimal.ZERO;
 
-  private BigDecimal promoAmount;
+  private BigDecimal promoAmount = BigDecimal.ZERO;
 
-  private BigDecimal giftAmount;
+  private BigDecimal giftAmount = BigDecimal.ZERO;
 
-  private BigDecimal couponAmount;
+  private BigDecimal couponAmount = BigDecimal.ZERO;
 
-  private BigDecimal discountAmount;
+  private BigDecimal discountAmount = BigDecimal.ZERO;
 
-  private PayType payType;
+  private PayType payType = PayType.NOT_PAID;
 
-  private OrderSts orderSts;
+  private OrderSts orderSts = OrderSts.PENDING_PAYMENT;
 
-  private String freightCompany;
+  private String freightCompany = "";
 
-  private String freightSn;
+  private String freightSn = "";
 
   private LocalDateTime autoConfirmTs;
 
-  private Integer giftPoint;
+  private Integer giftPoint = 0;
 
-  private Integer levelPoint;
+  private Integer levelPoint = 0;
 
-  private String billInvoice;
+  private String billInvoice = "";
 
-  private String billHeader;
+  private String billHeader = "";
 
-  private String billRecipientPhone;
+  private String billRecipientPhone = "";
 
-  private String billRecipientEmail;
+  private String billRecipientEmail = "";
 
-  private String recipientName;
+  private String recipientName = "";
 
-  private String recipientPhone;
+  private String recipientPhone = "";
 
-  private String recipientProvince;
+  private String recipientProvince = "";
 
-  private String recipientCity;
+  private String recipientCity = "";
 
-  private String recipientRegion;
+  private String recipientRegion = "";
 
-  private String recipientAddress;
+  private String recipientAddress = "";
 
-  private String note;
+  private String note = "";
 
-  private ConfirmSts confirmSts;
+  private ConfirmSts confirmSts = ConfirmSts.NOT_CONFIRM;
 
-  private DeleteSts deleteSts;
+  private DeleteSts deleteSts = DeleteSts.NOT_DELETED;
 
-  private Integer usedGiftPoint;
+  private Integer usedGiftPoint = 0;
 
   private LocalDateTime deliveryTs;
 

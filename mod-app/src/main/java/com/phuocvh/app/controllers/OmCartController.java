@@ -1,10 +1,12 @@
 package com.phuocvh.app.controllers;
 
+import com.phuocvh.app.dtos.CartItemResult;
+import com.phuocvh.app.dtos.DeleteCartItemRequest;
 import com.phuocvh.app.services.OmCartService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,9 +24,22 @@ public class OmCartController {
   }
 
   @DeleteMapping("/{memberId}")
-  public void remove(@PathVariable("memberId") Integer memberId,
-                     @RequestParam("productIds") List<Integer> productIds,
-                     @RequestParam("productSkuId") List<Integer> productSkuId) {
-    omCartService.remove(memberId, productId, productSkuId);
+  public void remove(
+      @PathVariable("memberId") Integer memberId, @RequestBody DeleteCartItemRequest request) {
+    omCartService.remove(memberId, request);
+  }
+
+  @GetMapping("/{memberId}")
+  public ResponseEntity<List<CartItemResult>> listAll(@PathVariable("memberId") Integer memberId) {
+    return ResponseEntity.ok(omCartService.listAll(memberId));
+  }
+
+  @PutMapping("/{memberId}/quantity")
+  public void updateQuantity(
+      @PathVariable("memberId") Integer memberId,
+      @RequestParam("productId") Integer productId,
+      @RequestParam("productSkuId") Integer productSkuId,
+      @RequestParam("isPosititive") Boolean isPositive) {
+    omCartService.updateQuantity(memberId, productId, productSkuId, isPositive);
   }
 }
