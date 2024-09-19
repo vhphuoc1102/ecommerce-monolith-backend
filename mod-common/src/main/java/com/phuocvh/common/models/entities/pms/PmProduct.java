@@ -55,9 +55,9 @@ public class PmProduct extends BaseAuditEntity {
 
   private BigDecimal originPrice;
 
-  private BigDecimal promoPrice;
+  private BigDecimal promoPrice; // Promotion Price used without SKU
 
-  private PromoType promoType;
+  private PromoType promoType; // Promotion Type used without SKU
 
   private String detailTitle;
 
