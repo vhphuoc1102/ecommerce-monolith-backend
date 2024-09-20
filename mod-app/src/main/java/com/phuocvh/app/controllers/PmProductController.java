@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class PmProductController {
   private final PmProductService pmProductService;
 
-  @GetMapping("/{productId}")
-  private ResponseEntity<ProductDetailResult> get(@PathVariable("productId") Integer productId) {
-    return ResponseEntity.ok(pmProductService.get(productId));
+  @GetMapping("/{memberId}/{productId}")
+  public ResponseEntity<ProductDetailResult> getProductDetail(
+      @PathVariable("memberId") Integer memberId, @PathVariable("productId") Integer productId) {
+    return ResponseEntity.ok(pmProductService.getProductDetail(memberId, productId));
   }
 }

@@ -1,9 +1,6 @@
 package com.phuocvh.app.dtos.pms;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,21 +9,10 @@ import lombok.Setter;
 @Setter
 @Builder
 public class ProductSkuInfo {
-  private Integer productSkuId;
+  private ProductSkuGeneralInfo productSkuGeneralInfo;
 
-  private String name;
-
-  private String pic;
-
-  private Integer stock;
-
-  private Integer lowStock;
-
-  @Builder.Default private Map<String, Object> attribute = new HashMap<>();
-
-  private BigDecimal price;
-
-  private BigDecimal promoPrice;
-
-  private List<String> productSkuPics;
+  private ProductOrSkuFlashSalePrice flashSalePrice;
+  private ProductOrSkuMemberPrice memberPrice;
+  private List<ProductOrSkuLadderPrice> ladderPrices;
+  private List<ProductOrSkuReducePrice> reducePrices;
 }

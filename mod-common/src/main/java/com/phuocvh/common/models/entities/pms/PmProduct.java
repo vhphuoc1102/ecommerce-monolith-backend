@@ -3,9 +3,10 @@ package com.phuocvh.common.models.entities.pms;
 import com.phuocvh.common.constants.*;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.util.List;
-import lombok.*;
 
 @Entity
 @Getter
@@ -57,7 +58,7 @@ public class PmProduct extends BaseAuditEntity {
 
   private BigDecimal promoPrice; // Promotion Price used without SKU
 
-  private PromoType promoType; // Promotion Type used without SKU
+  private PromoType promoType;
 
   private String detailTitle;
 
@@ -65,7 +66,7 @@ public class PmProduct extends BaseAuditEntity {
 
   private Integer sale;
 
-  private Integer review;
+  private Integer review; // Review count
 
   private BigDecimal rate;
 

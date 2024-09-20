@@ -1,9 +1,13 @@
 package com.phuocvh.common.models.entities.pms;
 
+import com.phuocvh.common.constants.CommentRate;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
+import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -13,6 +17,7 @@ import lombok.*;
 @Builder
 @Table(name = "PM_COMMENT")
 public class PmComment extends BaseAuditEntity {
+  private Integer memberId;
 
   private String memberUsername;
 
@@ -22,9 +27,10 @@ public class PmComment extends BaseAuditEntity {
 
   private String productName;
 
-  private String productAttribute;
+  @Convert(converter = JsonConverter.class)
+  private Map<String, Object> productAttribute = new HashMap<>();
 
-  private Integer star;
+  private CommentRate rate;
 
   private Integer showSts;
 
@@ -38,8 +44,8 @@ public class PmComment extends BaseAuditEntity {
 
   private String pic;
 
-  @OneToMany(mappedBy = "pmComment")
-  private List<PmCommentReply> pmCommentReply;
+  @OneToOne(mappedBy = "pmComment")
+  private PmCommentReply pmCommentReply;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "PRODUCT_ID")

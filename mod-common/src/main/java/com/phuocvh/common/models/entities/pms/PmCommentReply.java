@@ -18,9 +18,13 @@ public class PmCommentReply extends BaseAuditEntity {
 
   private String content;
 
-  private Integer type;
+  private Integer type; // admin or member
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "PARENT_REPLY_ID")
+  private PmCommentReply pmCommentReply;
+
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "COMMENT_ID")
   private PmComment pmComment;
 }

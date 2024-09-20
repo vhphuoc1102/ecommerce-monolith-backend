@@ -1,6 +1,6 @@
 package com.phuocvh.app.dtos.pms;
 
-import java.util.List;
+import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,5 +10,5 @@ import lombok.Setter;
 @Builder
 public class ProductDetailResult {
   private ProductInfo productInfo;
-  private List<ProductSkuInfo> productSkuInfos;
+  private Map<Integer, ProductSkuInfo> productSkuInfos;
 }
