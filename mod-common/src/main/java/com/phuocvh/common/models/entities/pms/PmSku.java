@@ -3,12 +3,11 @@ package com.phuocvh.common.models.entities.pms;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.*;
 
 @Entity
 @Getter

@@ -7,14 +7,17 @@ import com.phuocvh.app.dtos.pms.*;
 import com.phuocvh.app.mappers.PmProductMapper;
 import com.phuocvh.app.mappers.PmSkuMapper;
 import com.phuocvh.app.repositories.PmAlbumRepository;
+import com.phuocvh.app.repositories.PmProductAttributeRepository;
 import com.phuocvh.app.repositories.PmSkuRepository;
 import com.phuocvh.app.repositories.SmFlashSaleRepository;
 import com.phuocvh.common.constants.ActiveSts;
+import com.phuocvh.common.constants.AttributeType;
 import com.phuocvh.common.constants.DefaultConstant;
 import com.phuocvh.common.constants.PromoType;
-import com.phuocvh.common.models.entities.pms.PmAlbumPicture;
+import com.phuocvh.common.models.entities.pms.PmAlbumFile;
 import com.phuocvh.common.models.entities.pms.PmMemberPrice;
 import com.phuocvh.common.models.entities.pms.PmProduct;
+import com.phuocvh.common.models.entities.pms.PmProductAttribute;
 import com.phuocvh.common.models.entities.sms.SmFlashSale;
 import com.phuocvh.common.service.BaseService;
 import java.util.List;
@@ -35,6 +38,7 @@ public class PmProductService extends BaseService {
   private final SmFlashSaleRepository smFlashSaleRepository;
   private final UmMemberDao umMemberDao;
   private final MmMemberLevelDao mmMemberLevelDao;
+  private final PmProductAttributeRepository pmProductAttributeRepository;
 
   public ProductDetailResult getProductDetail(Integer memberId, Integer productId) {
     PmProduct pmProduct = pmProductDao.findById(productId);
@@ -178,7 +182,7 @@ public class PmProductService extends BaseService {
             pmAlbumRepository
                 .findPicturesByProductIdAndProductSkuId(pmProduct.getId(), DefaultConstant.VALUE)
                 .stream()
-                .map(PmAlbumPicture::getPic)
+                .map(PmAlbumFile::getFile)
                 .toList());
   }
 
@@ -190,7 +194,7 @@ public class PmProductService extends BaseService {
                 .findPicturesByProductIdAndProductSkuId(
                     pmProduct.getId(), productSkuInfo.getProductSkuGeneralInfo().getProductSkuId())
                 .stream()
-                .map(PmAlbumPicture::getPic)
+                .map(PmAlbumFile::getFile)
                 .toList());
   }
 
@@ -253,5 +257,21 @@ public class PmProductService extends BaseService {
                         .build())
             .collect(Collectors.toList());
     productInfo.setReducePrices(reducePrices);
+  }
+
+  public ProductSpecificationResult getProductSpecifications(Integer productId) {
+    List<PmProductAttribute> productAttributes =
+        pmProductAttributeRepository.findByProductIdAndAttributeType(
+            productId, AttributeType.SPECIFICATION);
+    Map<String, String> specifications =
+        productAttributes.stream()
+            .collect(
+                Collectors.toMap(
+                    productAttribute -> productAttribute.getPmAttribute().getName(),
+                    PmProductAttribute::getValue));
+    return ProductSpecificationResult.builder()
+        .productId(productId)
+        .specifications(specifications)
+        .build();
   }
 }

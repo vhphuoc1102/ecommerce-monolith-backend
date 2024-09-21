@@ -2,12 +2,11 @@ package com.phuocvh.app.dtos.pms;
 
 import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.Convert;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Getter
 @Setter

@@ -4,10 +4,9 @@ import com.phuocvh.common.constants.CommentRate;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import com.phuocvh.common.utils.JsonConverter;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.HashMap;
 import java.util.Map;
+import lombok.*;
 
 @Entity
 @Getter
@@ -41,8 +40,6 @@ public class PmComment extends BaseAuditEntity {
   private Integer replyQuantity;
 
   private String content;
-
-  private String pic;
 
   @OneToOne(mappedBy = "pmComment")
   private PmCommentReply pmCommentReply;

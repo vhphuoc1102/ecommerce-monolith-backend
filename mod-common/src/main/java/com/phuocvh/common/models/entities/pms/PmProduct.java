@@ -3,10 +3,9 @@ package com.phuocvh.common.models.entities.pms;
 import com.phuocvh.common.constants.*;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Getter

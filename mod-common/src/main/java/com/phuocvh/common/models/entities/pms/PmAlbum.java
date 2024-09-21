@@ -1,5 +1,6 @@
 package com.phuocvh.common.models.entities.pms;
 
+import com.phuocvh.common.constants.AlbumType;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -27,6 +28,8 @@ public class PmAlbum extends BaseAuditEntity {
 
   private String description;
 
+  private AlbumType albumType;
+
   @OneToMany(mappedBy = "pmAlbum")
-  private List<PmAlbumPicture> pmAlbumPicture;
+  private List<PmAlbumFile> pmAlbumFile;
 }

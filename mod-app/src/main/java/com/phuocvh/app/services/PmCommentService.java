@@ -10,16 +10,15 @@ import com.phuocvh.common.models.dtos.FilterParams;
 import com.phuocvh.common.models.dtos.PaginationResult;
 import com.phuocvh.common.models.entities.pms.PmComment;
 import com.phuocvh.common.service.BaseService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -30,10 +29,11 @@ public class PmCommentService extends BaseService {
   public PaginationResult<ProductCommentResult> getProductComments(
       Integer productId, FilterParams filterParams) {
     pmProductDao.findById(productId);
-    Page<PmComment> pmComments =  pmCommentRepository.findByProductId(productId, filterParams.getPageable());
+    Page<PmComment> pmComments =
+        pmCommentRepository.findByProductId(productId, filterParams.getPageable());
     long total = pmComments.getTotalElements();
     List<ProductCommentResult> results = new ArrayList<>();
-    if(total > 0){
+    if (total > 0) {
       results = pmComments.getContent().stream().map(PmCommentMapper.MAPPER::toResult).toList();
     }
 
@@ -43,8 +43,7 @@ public class PmCommentService extends BaseService {
                 .offset(filterParams.getOffset())
                 .limit(filterParams.getLimit())
                 .total(total)
-                .build()
-        )
+                .build())
         .data(results)
         .build();
   }
@@ -53,9 +52,9 @@ public class PmCommentService extends BaseService {
     pmProductDao.findById(productId);
     List<PmComment> pmComments = pmCommentRepository.findByProductId(productId);
     int review = pmComments.size();
-    Map<CommentRate, Integer> commentRateMap = pmComments.stream().collect(
-        Collectors.groupingBy(PmComment::getRate, Collectors.summingInt(e -> 1))
-    );
+    Map<CommentRate, Integer> commentRateMap =
+        pmComments.stream()
+            .collect(Collectors.groupingBy(PmComment::getRate, Collectors.summingInt(e -> 1)));
 
     return ProductCommentStatisticsResult.builder()
         .review(review)
@@ -66,7 +65,7 @@ public class PmCommentService extends BaseService {
 
   private BigDecimal calculateAvgRate(Map<CommentRate, Integer> commentRateMap, Integer review) {
     int sumRate = 0;
-    for(Map.Entry<CommentRate, Integer> entry : commentRateMap.entrySet()){
+    for (Map.Entry<CommentRate, Integer> entry : commentRateMap.entrySet()) {
       sumRate += entry.getKey().getValue() * entry.getValue();
     }
     return BigDecimal.valueOf(sumRate).divide(BigDecimal.valueOf(review), 1, RoundingMode.HALF_UP);

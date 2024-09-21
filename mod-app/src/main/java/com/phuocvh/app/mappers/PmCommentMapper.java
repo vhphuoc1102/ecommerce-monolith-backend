@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface PmCommentMapper {
   PmCommentMapper MAPPER = Mappers.getMapper(PmCommentMapper.class);
 
+  @Mapping(target = "pic", ignore = true)
   @Mapping(target = "productId", source = "pmComment.pmProduct.id")
   @Mapping(target = "commentId", source = "pmComment.id")
   ProductCommentResult toResult(PmComment pmComment);

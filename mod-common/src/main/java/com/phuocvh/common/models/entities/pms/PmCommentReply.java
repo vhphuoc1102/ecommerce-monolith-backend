@@ -12,6 +12,8 @@ import lombok.*;
 @Builder
 @Table(name = "PM_COMMENT_REPLY")
 public class PmCommentReply extends BaseAuditEntity {
+  private Integer memberId;
+
   private String memberUsername;
 
   private String memberIcon;

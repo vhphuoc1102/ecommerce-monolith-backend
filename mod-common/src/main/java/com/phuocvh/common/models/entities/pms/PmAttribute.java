@@ -1,5 +1,6 @@
 package com.phuocvh.common.models.entities.pms;
 
+import com.phuocvh.common.constants.AttributeType;
 import com.phuocvh.common.models.entities.BaseAuditEntity;
 import jakarta.persistence.*;
 import java.util.List;
@@ -29,7 +30,9 @@ public class PmAttribute extends BaseAuditEntity {
 
   private Integer handAddSts;
 
-  private Integer type;
+  private AttributeType attributeType;
+
+  private Integer sortOrder;
 
   @ManyToMany(mappedBy = "pmAttribute")
   private List<PmCategory> pmCategory;

@@ -1,6 +1,7 @@
 package com.phuocvh.app.controllers;
 
 import com.phuocvh.app.dtos.pms.ProductDetailResult;
+import com.phuocvh.app.dtos.pms.ProductSpecificationResult;
 import com.phuocvh.app.services.PmProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,5 +20,11 @@ public class PmProductController {
   public ResponseEntity<ProductDetailResult> getProductDetail(
       @PathVariable("memberId") Integer memberId, @PathVariable("productId") Integer productId) {
     return ResponseEntity.ok(pmProductService.getProductDetail(memberId, productId));
+  }
+
+  @GetMapping("/{productId}/specifications")
+  public ResponseEntity<ProductSpecificationResult> getProductSpecifications(
+      @PathVariable("productId") Integer productId) {
+    return ResponseEntity.ok(pmProductService.getProductSpecifications(productId));
   }
 }
